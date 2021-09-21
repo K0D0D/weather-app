@@ -4,6 +4,352 @@
 
 body {
     font-family: "Nunito Sans", sans-serif;
+    background-color: #2b2b2b;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: background-image 1s;
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+}
+
+.wrapper {
+    max-width: 1700px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 30px;
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
+    grid-template-rows: repeat(2, minmax(min-content, max-content)) 1fr;
+    grid-gap: 30px;
+}
+
+.current-weather {
+    display: flex;
+    align-items: center;
+    @extend %glass-item;
+    &__left {
+        padding: 50px 30px;
+        position: relative;
+        @extend %glass-item;
+    }
+    &__condition {
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+    }
+    &__condition-icon {
+        max-height: 1em;
+    }
+    &__condition-description {
+        margin-left: 0.3em;
+        font-weight: 400;
+    }
+    &__date {
+        margin-top: 1em;
+        font-weight: 300;
+        font-size: 16px;
+        color: rgba(#fff, 0.7);
+    }
+    &__temp-container {
+        display: flex;
+        align-items: center;
+    }
+    &__temp {
+        font-size: 64px;
+        font-weight: 700;
+        padding-left: 0.6em;
+        position: relative;
+    }
+    &__temp:before {
+        content: "";
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        width: 0.4em;
+        height: 1em;
+        transform: translateY(50%);
+        background-image: url("../assets/images/other_icons/temp.svg");
+        background-size: 100% 100%;
+    }
+    &__location {
+        margin-top: 0.8em;
+        padding-left: 1.2em;
+        width: fit-content;
+        position: relative;
+        font-size: 18px;
+    }
+    &__location:before {
+        content: "";
+        position: absolute;
+        bottom: 50%;
+        left: 0;
+        width: 0.9em;
+        height: 1.3em;
+        transform: translateY(50%);
+        background-image: url("../assets/images/other_icons/location.svg");
+        background-size: 100% 100%;
+    }
+    &__city {
+        text-transform: capitalize;
+    }
+    &__country {
+        text-transform: uppercase;
+    }
+    &__right {
+        padding: 0 30px 0 30px;
+        font-size: 18px;
+    }
+    &__humidity, 
+    &__pressure,
+    &__visibility,
+    &__wspeed {
+        color: rgba(#fff, 0.7);
+        font-weight: 300;
+        padding-left: 2.2em;
+        position: relative;
+        white-space: nowrap;
+        &-data {
+            color: #fff;
+            font-weight: 700;
+        }
+    }
+    &__pressure,
+    &__visibility,
+    &__wspeed {
+        margin-top: 1em;
+    }
+    &__humidity:before,
+    &__pressure:before,
+    &__visibility:before,
+    &__wspeed:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 50%;
+        transform: translateY(50%);
+        width: 1.8em;
+        height: 1.5em;
+        background-size: 100% 100%;
+    }
+    &__humidity:before {
+        background-image: url("../assets/images/other_icons/humidity.svg");
+    }
+    &__pressure:before {
+        background-image: url("../assets/images/other_icons/pressure.svg");
+    }
+    &__visibility:before {
+        background-image: url("../assets/images/other_icons/visibility.svg");
+    }
+    &__wspeed:before {
+        background-image: url("../assets/images/other_icons/wind.svg");
+    }
+}
+
+.map {
+    @extend %glass-item;
+    overflow: hidden;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    opacity: 0.9;
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.locations {
+    padding: 30px 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    @extend %glass-item;
+    z-index: 999;
+    transition: 0.3s;
+    &__search-form {
+        flex: 1 1 0;
+        display: flex;
+        width: 100%;
+        margin-right: 1em;
+        position: relative;
+    }
+    &__search-input {
+        width: 100%;
+        height: 100%;
+        padding: 0.6em 1.4em;
+        background-color: rgba(#fff, 0.1);
+        border-radius: 1em 0 0 1em;
+        &::placeholder {
+            color: rgba(#fff, 0.6);
+        }
+    }
+    &__search-input.focus-visible,
+    &__search-btn.focus-visible {
+        box-shadow: inset 0 0 0 2px #fff;
+    }
+    &__search-btn {
+        height: 100%;
+        min-width: 2.7em;
+        position: relative;
+        background-color: rgba(#000, 0.5);
+        cursor: pointer;
+        transition: background-color 0.3s, opacity 0.3s;
+        border-radius: 0 1em 1em 0;
+    }
+    &__search-btn:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.7em;
+        height: 1.7em;
+        background-image: url("../assets/images/other_icons/search.svg");
+        background-size: 100% 100%;
+        opacity: 0.3;
+        transition: 0.3s;
+    }
+    &__search-btn:hover {
+        background-color: rgba(#000, 0.6);
+    }
+    &__search-btn:hover:after {
+        opacity: 0.7;
+    }
+    &__search-btn:active {
+        background-color: rgba(#000, 0.8);
+    }
+    &__search-error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: max-content;
+        font-weight: 700;
+        color: #ff0000b7;
+    }
+    &__recent {
+        flex: 1 1 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.6em 1.4em;
+        border-radius: 1em;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: opacity 0.3s, box-shadow 0.1s;
+        box-shadow: inset 0 0 3px rgba(#fff, 0);
+        background-color: rgba(#fff, 0.3);
+    }
+    &__recent:hover {
+        opacity: 0.8;
+    }
+    &__recent:active {
+        opacity: 0.7;
+        box-shadow: inset 0 0 5px rgba(#fff, 0.3);
+    }
+    &__recent.focus-visible {
+        transition: opacity 0.3s, box-shadow 0s;
+        box-shadow: inset 0 0 0 2px #fff;
+    }
+    &__recent-text {
+        position: relative;
+        transition: 0.3s;
+    }
+    &__recent-text:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 50%;
+        transform: translateY(50%) rotate(180deg);
+        width: 1.3em;
+        height: 1.3em;
+        background-image: url("../assets/images/other_icons/earth.svg");
+        background-size: 100% 100%;
+        opacity: 0;
+        transition: opacity 0.2s, transform 0.4s;
+    }
+    &__recent:hover &__recent-text {
+        padding-left: 1.5em;
+    }
+    &__recent:hover &__recent-text:before {
+        opacity: 1;
+        transform: translateY(50%) rotate(0deg);
+    }
+}
+
+.forecast {
+    padding: 50px 30px 15px 30px;
+    grid-column: 1 / span 2;
+    @extend %glass-item;
+    border-radius: 15px 15px 0 0;
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 15px;
+        position: relative;
+        box-shadow: 0 3px 0 rgba(0, 0, 0, 0);
+        transition: 0.3s ease-out;
+    }
+    &__item:hover {
+        transform: translateY(-20px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    }
+    &__date {
+        font-size: 18px;
+        font-weight: 300;
+        margin-bottom: 1.5em;
+        white-space: nowrap;
+        text-align: center;
+    }
+    &__icon-container {
+        max-height: 90px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    &__icon {
+        max-height: 100%;
+    }
+    &__temp {
+        font-size: 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__temp-max {
+        margin-top: 0.5em;
+        padding-bottom: 0.2em;
+        position: relative
+    }
+    &__temp-max:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160%;
+        height: 2px;
+        border-radius: 15px;
+        background-color: #fff;
+    }
+    &__temp-min {
+        margin-top: 0.2em;
+        color: rgba(#fff, 0.7);
+    }
 }
 
 @import "media.scss";

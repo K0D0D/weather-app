@@ -7,6 +7,146 @@
     <title>Weather App</title>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="container">
+            <div class="current-weather">
+                <div class="current-weather__left">
+                    <div class="current-weather__condition">
+                        <img class="current-weather__condition-icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        <span class="current-weather__condition-description">clear sky</span>
+                    </div>
+                    <p class="current-weather__date">
+                        Tue, Sep 21 
+                    </p>
+                    <p class="current-weather__temp">19 <span class="current-weather__temp-unit">°C</span></p>
+                    <p class="current-weather__location">
+                        <span class="current-weather__city">City</span>,
+                        <span class="current-weather__country">GB</span>
+                    </p>
+                </div>
+                <div class="current-weather__right">
+                    <p class="current-weather__humidity">
+                        Humidity: <span class="current-weather__humidity-data">50 %</span>
+                    </p>
+                    <p class="current-weather__pressure">
+                        Air pressure: <span class="current-weather__pressure-data">1000 hPa</span>
+                    </p>
+                    <p class="current-weather__visibility">
+                        Visibility: <span class="current-weather__visibility-data">10000 m</span>
+                    </p>
+                    <p class="current-weather__wspeed">
+                        Wind speed: <span class="current-weather__wspeed-data">2 m/s</span>
+                    </p>
+                </div>
+            </div>
+            <div class="map">
+                <iframe id="map-iframe" src="https://maps.google.com/maps?q=52.5014,-3.1638&z=11&output=embed"></iframe>
+            </div>
+            <div class="locations">
+                <form class="locations__search-form">
+                    <input class="locations__search-input" placeholder="Search city..." autocomplete="off" type="text">
+                    <button class="locations__search-btn" type="submit"></button>
+                </form>
+                <button class="locations__recent">
+                    <span class="locations__recent-text">Recent locations</span>
+                </button>
+            </div>
+            <div class="forecast">
+                <div class="forecast__inner">
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                    <div class="forecast__item">
+                        <p class="forecast__date">
+                            Tue, <wbr>
+                            Sep 21
+                        </p>
+                        <div class="forecast__icon-container">
+                            <img class="forecast__icon" src="assets/images/conditions_icons/01d.svg" alt="01d">
+                        </div>
+                        <div class="forecast__temp">
+                            <p class="forecast__temp-max">19</p>
+                            <p class="forecast__temp-min">10</p>   
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
