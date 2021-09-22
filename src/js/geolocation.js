@@ -22,9 +22,10 @@ export async function positionHandler () {
             position = JSON.parse(localStorage.getItem("position"));
         }
     }
-
-    console.log(position);
+    
     updateMap(position);
+
+    return position;
 }
 
 export function updateMap (locationObj) {
