@@ -4,6 +4,7 @@ import "focus-visible";
 
 import * as geolocation from "./geolocation";
 import getWeather from "./getWeather";
+import renderWeather from "./renderWeather";
 
 document.addEventListener("DOMContentLoaded", () => {
     getInitialPosition();
@@ -19,7 +20,7 @@ async function makeForecast (position) {
     try {
         const [ currentWeather, weeklyWeather ] = await getWeather(position);
 
-        console.log(currentWeather, weeklyWeather);
+        renderWeather(currentWeather, weeklyWeather);
     } catch (err) {
         alert(err);
     }
