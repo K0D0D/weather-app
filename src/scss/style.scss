@@ -460,6 +460,9 @@ body {
         transition: opacity 0.3s, box-shadow 0s;
         box-shadow: inset 0 0 0 2px #fff;
     }
+    .item--delete {
+        background-color: rgba(#cc0000, 0.4);
+    }
     &__item-city {
         font-weight: 700;
     }
