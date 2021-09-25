@@ -15,8 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     savedLocations();
 });
 
+function hidePreloader () {
+    document.querySelector(".preloader").classList.add("preloader--hidden");
+    document.body.classList.remove("no-scroll");
+}
+
 async function getInitialPosition () {
     const position = await geolocation.positionHandler();
+
+    setTimeout(hidePreloader, 1000);
 
     makeForecast(position);
 }
