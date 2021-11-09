@@ -32,6 +32,8 @@ async function makeForecast (position) {
     try {
         const [ currentWeather, weeklyWeather ] = await getWeather(position);
 
+        geolocation.updateMap(position);
+
         renderWeather(currentWeather, weeklyWeather);
     } catch (err) {
         alert(err);
@@ -167,7 +169,6 @@ function searchCity () {
         });
 
         makeForecast(position);
-        geolocation.updateMap(position);
         citiesModal.close();
         input.focus();
     }

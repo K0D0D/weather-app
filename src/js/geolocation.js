@@ -22,8 +22,6 @@ export async function positionHandler () {
             position = JSON.parse(localStorage.getItem("position"));
         }
     }
-    
-    updateMap(position);
 
     return position;
 }
