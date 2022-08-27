@@ -1,6 +1,6 @@
 # ☁️ Weather App
 
-A simple weather app made with vanilla JavaScript using [Open Weather Map Api](https://openweathermap.org/api)
+A simple weather app made with vanilla JavaScript using [Open Weather Map Api](https://openweathermap.org/api).
 
 ## 🔧 Built with
 
@@ -10,16 +10,14 @@ A simple weather app made with vanilla JavaScript using [Open Weather Map Api](h
 - Babel
 - Webpack 5
 
-## 🔑 APIs
-
-- [Current Weather Data](https://openweathermap.org/current)
-- [One Call API](https://openweathermap.org/api/one-call-api)
-
 ## 🚀 Installation
 
 - Clone this repo `git clone https://github.com/K0D0D/weather-app.git`
-- `cd weather-app`
-- run `npm i`
+- Go to the project directory `cd weather-app`
+- Install npm dependencies `npm i`
+- Create a .env file
+- Get your API keys from [Open Weather Map API](https://openweathermap.org/api) and [MapTiler Cloud API](https://docs.maptiler.com/cloud/api)
+- Add the API keys to the .env file `WEATHER_API_KEY=YOUR_WEATHER_API_KEY` `MAPS_API_KEY=YOUR_MAPS_API_KEY`
 
 ## 🔌 Usage
 
@@ -29,4 +27,4 @@ A simple weather app made with vanilla JavaScript using [Open Weather Map Api](h
 
 ## 👀 Demo
 
-https://k0d0d.github.io/weather-app/
+[Link](https://k0d0d-weather-app.netlify.app)
