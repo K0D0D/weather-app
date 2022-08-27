@@ -1,10 +1,10 @@
 export async function getCities (value) {
-    const apiKey = "3fe1069690ebca35a5e25a328d0074a0";
+    const apiKey = process.env.WEATHER_API_KEY;
     const url = "https://api.openweathermap.org/data/2.5/find" +
-                              "?q=" + value + 
-                              "&cnt=50" +
-                              "&units=metric" +
-                              "&appid=" + apiKey;
+                "?q=" + value + 
+                "&cnt=50" +
+                "&units=metric" +
+                "&appid=" + apiKey;
 
     const response = await fetch(url);     
     const data = await response.json();

@@ -1,15 +1,15 @@
-async function getWeather (locationObj) {
-    const apiKey = "3fe1069690ebca35a5e25a328d0074a0";
+async function getWeather ({ lat, lon }) {
+    const apiKey = process.env.WEATHER_API_KEY;
 
     const currentWeatherUrl = "https://api.openweathermap.org/data/2.5/weather" +
-                              "?lat=" + locationObj.lat +
-                              "&lon=" + locationObj.lon +
+                              "?lat=" + lat +
+                              "&lon=" + lon +
                               "&units=metric" +
                               "&appid=" + apiKey;
     
     const weeklyWeatherUrl = "https://api.openweathermap.org/data/2.5/onecall" +
-                             "?lat=" + locationObj.lat +
-                             "&lon=" + locationObj.lon +
+                             "?lat=" + lat +
+                             "&lon=" + lon +
                              "&exclude=current,minutely,hourly,alerts" +
                              "&units=metric" +
                              "&appid=" + apiKey;
@@ -18,14 +18,14 @@ async function getWeather (locationObj) {
 
     urls.push(currentWeatherUrl, weeklyWeatherUrl);
 
-    const jsons = await Promise.all(urls.map(async url => {
+    const data = await Promise.all(urls.map(async url => {
         const resp = await fetch(url);
         const json = await resp.json();
 
         return json;
     }));
 
-    return jsons;
+    return data;
 }
 
 export default getWeather;

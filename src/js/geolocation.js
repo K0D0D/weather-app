@@ -26,16 +26,11 @@ export async function positionHandler () {
     return position;
 }
 
-export function updateMap (locationObj) {
-    const mapIframe = document.querySelector("#map-iframe") || document.createElement("iframe");
+export function updateMap ({ lat, lon }) {
+    const mapIframe = document.querySelector("#map-iframe");
+    const apiKey = process.env.MAPS_API_KEY;
 
-    if (!mapIframe.id) {
-        mapIframe.id = "map-iframe";
-        document.querySelector(".map").appendChild(mapIframe);
-    }
-
-    mapIframe.src = "https://maps.google.com/maps?q=" +
-                    locationObj.lat + "," + 
-                    locationObj.lon + 
-                    "&z=11&output=embed";
+    mapIframe.src = "https://api.maptiler.com/maps/hybrid/"+
+                    "?key=" + apiKey + "#14/" + 
+                    lat + "/" + lon;
 }
